@@ -26,23 +26,33 @@ Run `install.cmd` as Administrator (it elevates itself). It will:
 Full fixed old version:
 
 ```text
-https://github.com/g4348914-coder/ads-suite-install/releases/download/v2026.11.12-log/ADS-Suite-FIXED-20261112.zip
+https://github.com/g4348914-coder/ads-suite-install/releases/download/v2026.11.12-log2/ADS-Suite-FIXED-20261112.zip
 ```
 
 Count/clicker patch:
 
 ```text
-https://github.com/g4348914-coder/ads-suite-install/releases/download/v2026.11.12-log/ADS-Count-Fix.zip
+https://github.com/g4348914-coder/ads-suite-install/releases/download/v2026.11.12-log2/ADS-Count-Fix.zip
+```
+
+Minimal Octo status hotfix (`writeProcStatus`):
+
+```text
+https://github.com/g4348914-coder/ads-suite-install/releases/download/v2026.11.12-log2/ADS-Octo-Status-Fix.zip
 ```
 
 ADS Suite v2:
 
 ```text
-https://github.com/g4348914-coder/ads-suite-install/releases/download/v2026.11.12-log/ADS-Suite-v2-phase6.zip
+https://github.com/g4348914-coder/ads-suite-install/releases/download/v2026.11.12-log2/ADS-Suite-v2-phase6.zip
 ```
 
 SHA-256 of the full archive:
 
 ```text
-727D3282A4A64EEE21A138A12BD80B8B3BEE5CECCD41360CBB2466BCDA8DB904
+7F20B93F65A424B03E07D1B57F41F506D3781946920E3757DB8F477EF2D1A5CF
 ```
+
+Important: release `v2026.11.12-log` contains an older archive with a broken
+`checker-server.js` (`writeProcStatus is not defined`). Use `v2026.11.12-log2`
+or the minimal status hotfix above.
