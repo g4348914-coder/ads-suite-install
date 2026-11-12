@@ -5,17 +5,17 @@ $ErrorActionPreference = 'Stop'
 
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 if (-not $isAdmin) {
-    $self = $MyInvocation.MyCommand.Path
-    if (-not $self) { throw 'Run install.cmd as Administrator.' }
+    $remoteScript = 'https://raw.githubusercontent.com/g4348914-coder/ads-suite-install/main/install.ps1'
+    $command = "& ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing '$remoteScript').Content))"
     Start-Process -FilePath 'powershell.exe' -Verb RunAs -ArgumentList @(
-        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', ('"' + $self + '"'), '-InstallRoot', $InstallRoot
+        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-Command', $command
     ) | Out-Null
     exit
 }
 
 $AssetName = 'ADS-Suite-FIXED-20261112.zip'
-$AssetUrl = "https://github.com/g4348914-coder/ads-suite-install/releases/download/v2026.11.12-log/$AssetName"
-$ExpectedHash = '727D3282A4A64EEE21A138A12BD80B8B3BEE5CECCD41360CBB2466BCDA8DB904'
+$AssetUrl = "https://github.com/g4348914-coder/ads-suite-install/releases/download/v2026.11.12-log2/$AssetName"
+$ExpectedHash = '7F20B93F65A424B03E07D1B57F41F506D3781946920E3757DB8F477EF2D1A5CF'
 $Stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
 
 if (-not (Test-Path $InstallRoot)) { New-Item -ItemType Directory -Path $InstallRoot -Force | Out-Null }
